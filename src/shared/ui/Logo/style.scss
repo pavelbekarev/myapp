@@ -1,0 +1,41 @@
+.logo {
+  &__logoContent {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+
+    &-title {
+      font-size: 3rem;
+      text-transform: uppercase;
+      font-family: sans-serif;
+      color: #fff;
+    }
+  }
+
+  &__logoLink {
+    text-decoration: none;
+  }
+
+  &__logoText {
+    font-family: "Font-Bold";
+    margin: 0;
+    color: #2d2d2d;
+
+    &--l {
+      font-size: 3rem;
+    }
+
+    &--m {
+      font-size: 2rem;
+    }
+  }
+
+  &__logo {
+    width: 15rem;
+    height: 15rem;
+    object-fit: contain;
+    background-color: transparent;
+    background-color: #fff;
+  }
+}

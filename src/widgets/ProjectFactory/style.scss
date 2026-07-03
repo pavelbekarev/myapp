@@ -1,0 +1,33 @@
+.projectFactory {
+  display: flex;
+  flex-flow: row;
+  gap: 1rem;
+  margin-top: 7rem;
+
+  animation: fade-in linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 10%;
+
+  @media (max-width: 830px) {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+  }
+
+  @media (max-width: 570px) {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    width: 100%;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

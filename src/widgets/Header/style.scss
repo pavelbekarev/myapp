@@ -1,0 +1,96 @@
+.header {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__contactInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5rem;
+  }
+
+  &__item {
+    font-size: 2rem;
+    text-decoration: none;
+    color: #fff;
+    font-family: sans-serif;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #b4b4b4;
+    }
+  }
+
+  &__logoContent {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+
+    &-title {
+      font-size: 3rem;
+      text-transform: uppercase;
+      font-family: sans-serif;
+      color: #fff;
+    }
+  }
+
+  &__logoLink {
+    text-decoration: none;
+  }
+
+  &__logoText {
+    font-family: "Font-Bold";
+    margin: 0;
+    color: #2d2d2d;
+
+    &--l {
+      font-size: 3rem;
+    }
+
+    &--m {
+      font-size: 2rem;
+    }
+  }
+
+  &__logo {
+    width: 15rem;
+    height: 15rem;
+    object-fit: contain;
+    background-color: transparent;
+    background-color: #fff;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5rem;
+    list-style: none;
+  }
+
+  &__link {
+    text-decoration: none;
+    font-size: 2rem;
+    color: #2d2d2d;
+    transition: color 0.3s ease;
+  }
+
+  &__listItem:hover &__link {
+    color: #a0a0a0;
+  }
+}
