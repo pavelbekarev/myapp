@@ -1,4 +1,3 @@
-import { api } from "#shared/api/axiosInstance";
 import type { ContactFormPayload } from "../model/types";
 
 export async function sendContactData(data: ContactFormPayload) {
@@ -8,7 +7,7 @@ export async function sendContactData(data: ContactFormPayload) {
     // return response;
     console.debug(data);
 
-    return new Promise((resolve) => {
+    return new Promise(() => {
       setTimeout(() => {
         alert("Форма успешно отправлена");
       }, 700);

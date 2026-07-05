@@ -1,13 +1,17 @@
-import { InputMask } from "@react-input/mask";
+import { useMask } from "@react-input/mask";
 import { contactFormConfig } from "../model/config";
 import { useContactForm } from "../model/useContactForm";
 import "../style.scss"
 import "@daypicker/react/style.css";
-import { DayPicker } from "@daypicker/react";
 import CustomDayPicker from "#shared/ui/CustomDayPicker";
 
 export function ContactForm() {
     const { formData, handleChange, handleSubmit, handleDateChange } = useContactForm();
+
+    const phoneRef = useMask({
+        mask: "+7 (___) ___-__-__",
+        replacement: { _: /\d/ },
+    });
 
     return (
         <form onSubmit={handleSubmit} className="contactForm">
@@ -24,16 +28,14 @@ export function ContactForm() {
                             placeholder={item.placeholder}
                         /> :
                         item.type === 'tel' ? 
-                        <InputMask
+                        <input
+                            ref={phoneRef}
                             onChange={handleChange}
                             className="contactForm__input"
-                            mask="+7 (___) ___-__-__"
-                            replacement={{ _: /\d/ }}
-                            key={index}
                             id={item.id}
                             name={item.id}
                             placeholder={item.placeholder}
-                            type={item.type}
+                            type="tel"
                         />
                         :
                         item.type === 'date' ? 
