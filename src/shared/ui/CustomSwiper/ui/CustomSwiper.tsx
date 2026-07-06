@@ -19,6 +19,7 @@ export default function CustomSwiper<T>({ swiperConfig, renderSlide, children }:
         delay: 1000,
     }
 
+
     if (swiperConfig?.slides)
         return (
             <Swiper
@@ -37,7 +38,7 @@ export default function CustomSwiper<T>({ swiperConfig, renderSlide, children }:
             >
                 {
                     swiperConfig?.slides.map((slide, key: number) => (
-                        <SwiperSlide>
+                        <SwiperSlide key={key}>
                             {
                                 renderSlide ?
                                 renderSlide(slide, key) :

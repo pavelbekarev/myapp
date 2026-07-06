@@ -8,6 +8,8 @@ export function ProjectFactory() {
     const { projects, loading, error } = useProjects();
 
     useEffect(() => {
+        if (!error) return;
+        
         alert(error);
     }, [error])
 

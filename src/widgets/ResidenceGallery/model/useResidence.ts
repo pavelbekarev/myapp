@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { loadResidences } from "../api/loadResidences";
 
 export function useResidence() {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [residences, setResidences] = useState<Residence[]>([]);
   const [error, setError] = useState<string | null>(null);
 

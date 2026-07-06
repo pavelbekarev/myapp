@@ -10,20 +10,29 @@ export function ResidenceGallery() {
     const { loading, residences, error } = useResidence();
 
     useEffect(() => {
+        if (!error) return;
+        
         alert(error);
     }, [error])
+
+    if (loading) {
+        return <Spinner />
+    }
+
+    if (!residences.length) {
+        return null;
+    }
 
     return (
         <div className="residenceGallery">
             {
-                loading ? <Spinner /> :
                 <CustomSwiper<Residence>
                     swiperConfig={{slides: residences, spaceBetween: 0, autoPlay: {
                         delay: 2000,
                         pauseOnMouseEnter: true
                     } }}
-                    renderSlide={(slide, key) => (
-                        <ResidenceCard key={key} data={slide} />
+                    renderSlide={(slide) => (
+                        <ResidenceCard data={slide} />
                     )}
                 />
             }
