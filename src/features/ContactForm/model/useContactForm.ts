@@ -11,7 +11,7 @@ export function useContactForm() {
     comment: "",
   });
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!validation(formData)) {
@@ -27,7 +27,11 @@ export function useContactForm() {
     }
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     const { name, value } = e.target;
     console.debug(name, value);
 

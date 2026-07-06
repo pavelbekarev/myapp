@@ -1,3 +1,4 @@
+import type { Residence } from "#entities/Residence";
 import ResidenceCard from "#features/ResidenceCard"
 import CustomSwiper from "#shared/ui/CustomSwiper";
 import Spinner from "#shared/ui/Spinner";
@@ -11,7 +12,7 @@ export function ResidenceGallery() {
         <div className="residenceGallery">
             {
                 loading ? <Spinner /> :
-                <CustomSwiper
+                <CustomSwiper<Residence>
                     swiperConfig={{slides: residences, spaceBetween: 0, autoPlay: {
                         delay: 2000,
                         pauseOnMouseEnter: true
