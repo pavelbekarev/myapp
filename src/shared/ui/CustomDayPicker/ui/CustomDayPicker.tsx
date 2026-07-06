@@ -1,7 +1,7 @@
 import { DayPicker } from "@daypicker/react";
 import "../style.scss"
 
-export function CustomDayPicker({ handleChange, selectedDate }: { handleChange: (date: Date) => void; selectedDate: Date }) {
+export function CustomDayPicker({ handleChange, selectedDate }: { handleChange: (date: Date | undefined) => void; selectedDate: Date | undefined }) {
     return (
         <DayPicker
             className="customDayPicker"

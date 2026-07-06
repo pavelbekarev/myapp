@@ -16,7 +16,6 @@ export function useProjects() {
         setProjects(data);
       } catch {
         setError("Не удалось загрузить проекты");
-        alert(error);
       } finally {
         setLoading(false);
       }

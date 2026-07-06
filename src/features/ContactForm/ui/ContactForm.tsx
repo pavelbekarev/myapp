@@ -3,7 +3,7 @@ import { contactFormConfig } from "../model/config";
 import { useContactForm } from "../model/useContactForm";
 import "../style.scss"
 import "@daypicker/react/style.css";
-import CustomDayPicker from "#shared/ui/CustomDayPicker";
+import { ContactField } from "./ContactField";
 
 export function ContactForm() {
     const { formData, handleChange, handleSubmit, handleDateChange } = useContactForm();
@@ -18,40 +18,13 @@ export function ContactForm() {
             <div className="contactForm__inputs">
                 {
                     contactFormConfig.map((item, index) => (
-                        item.type === 'textarea' ?
-                        <textarea
+                        <ContactField
                             key={index}
-                            className="contactForm__input"
+                            field={item}
                             onChange={handleChange}
-                            id={item.id}
-                            name={item.id}
-                            placeholder={item.placeholder}
-                        /> :
-                        item.type === 'tel' ? 
-                        <input
-                            ref={phoneRef}
-                            onChange={handleChange}
-                            className="contactForm__input"
-                            id={item.id}
-                            name={item.id}
-                            placeholder={item.placeholder}
-                            type="tel"
-                        />
-                        :
-                        item.type === 'date' ? 
-                        <CustomDayPicker
-                            handleChange={handleDateChange}
+                            onDateChange={handleDateChange}
+                            phoneRef={phoneRef}
                             selectedDate={formData.date}
-                        />
-                        :
-                        <input
-                            onChange={handleChange}
-                            className="contactForm__input"
-                            key={index}
-                            id={item.id}
-                            name={item.id}
-                            placeholder={item.placeholder}
-                            type={item.type}
                         />
                     ))
                 }

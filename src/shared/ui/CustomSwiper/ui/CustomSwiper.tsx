@@ -10,13 +10,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, A11y, Navigation } from 'swiper/modules';
 import type { CustomSwiperProps } from "../model/types"
 import { defaultBreakpoints } from "../model/defaultBreakpoints"
+import type { SwiperModule } from "swiper/types"
 
-export default function CustomSwiper({ swiperConfig, renderSlide, children }: CustomSwiperProps) {
-    const modules: any[] = [Navigation, Autoplay, A11y]
+export default function CustomSwiper<T>({ swiperConfig, renderSlide, children }: CustomSwiperProps<T>) {
+    const modules: SwiperModule[] = [Navigation, Autoplay, A11y]
     const defaultAutoplayConfig = {
         pauseOnMouseEnter: true,
         delay: 1000,
     }
+
 
     if (swiperConfig?.slides)
         return (
@@ -35,8 +37,8 @@ export default function CustomSwiper({ swiperConfig, renderSlide, children }: Cu
                 navigation={swiperConfig?.navigation}
             >
                 {
-                    swiperConfig?.slides.map((slide: any, key: number) => (
-                        <SwiperSlide>
+                    swiperConfig?.slides.map((slide, key: number) => (
+                        <SwiperSlide key={key}>
                             {
                                 renderSlide ?
                                 renderSlide(slide, key) :
