@@ -38,11 +38,12 @@ export function useContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleDateChange = (date: Date) => {
-    setFormData((prev) => ({
-      ...prev,
-      date: date,
-    }));
+  const handleDateChange = (date: Date | undefined) => {
+    if (date)
+      setFormData((prev) => ({
+        ...prev,
+        date: date,
+      }));
   };
 
   return {
