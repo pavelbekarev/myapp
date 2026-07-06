@@ -16,7 +16,6 @@ export function useResidence() {
         setResidences(data);
       } catch {
         setError("Не удалось загрузить проекты");
-        alert(error);
       } finally {
         setLoading(false);
       }

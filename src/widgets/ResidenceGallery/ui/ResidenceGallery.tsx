@@ -2,11 +2,16 @@ import type { Residence } from "#entities/Residence";
 import ResidenceCard from "#features/ResidenceCard"
 import CustomSwiper from "#shared/ui/CustomSwiper";
 import Spinner from "#shared/ui/Spinner";
+import { useEffect } from "react";
 import { useResidence } from "../model/useResidence"
 import "../style.scss"
 
 export function ResidenceGallery() {
-    const { loading, residences } = useResidence();
+    const { loading, residences, error } = useResidence();
+
+    useEffect(() => {
+        alert(error);
+    }, [error])
 
     return (
         <div className="residenceGallery">
