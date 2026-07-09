@@ -7,7 +7,7 @@ import type { Project } from "#entities/Project";
 import { Link } from "react-router-dom";
 
 export function ProjectCard({ data }: { data: Project }) {
-    const cardImg = data.img || defaultImg;
+    const cardImg = data.img ?? defaultImg;
 
     return (
         <>

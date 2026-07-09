@@ -14,7 +14,7 @@ export default defineConfig({
       "#entities": path.resolve(__dirname, "src/entities"),
       "#pages": path.resolve(__dirname, "src/pages"),
       "#app": path.resolve(__dirname, "src/app"),
-      "#assets": path.resolve(__dirname, "public/assets"),
+      "#assets": path.resolve(__dirname, "src/shared/assets"),
       "#fonts": path.resolve(__dirname, "public/fonts"),
     },
   },
