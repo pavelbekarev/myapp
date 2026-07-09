@@ -26,7 +26,7 @@ export function ResidenceCard({ data }: { data: Residence }) {
                 }
                 {
                     data.img &&
-                    <Link to={'/residence'} className="residenceCard__button">
+                    <Link to={'/'} className="residenceCard__button">
                         <span className="residenceCard__button-text">Перейти</span>
                         <img loading="lazy" className="residenceCard__button-img" src={arrow} alt="Стрелка вправо" />
                     </Link>
