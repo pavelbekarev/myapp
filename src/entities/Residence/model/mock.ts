@@ -1,6 +1,6 @@
 import type { Residence } from "./types";
-import project1 from "#assets/project1.png";
-import project2 from "#assets/project2.png";
+import project1 from "#assets/project1.webp";
+import project2 from "#assets/project2.webp";
 
 export const residenceData: Residence[] = [
   {

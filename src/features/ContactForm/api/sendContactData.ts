@@ -7,9 +7,10 @@ export async function sendContactData(data: ContactFormPayload) {
     // return response;
     console.debug(data);
 
-    return new Promise(() => {
+    return new Promise<void>((resolve) => {
       setTimeout(() => {
         alert("Форма успешно отправлена");
+        resolve();
       }, 700);
     });
   } catch {

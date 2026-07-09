@@ -1,5 +1,5 @@
 export interface ContactField {
-  id: string;
+  id: keyof ContactFormPayload;
   label: string;
   placeholder: string;
   type: "text" | "textarea" | "tel" | "email" | "date";
@@ -17,7 +17,10 @@ export interface ContactFieldProps {
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ) => void;
   field: ContactField;
+  value: string;
   onDateChange: (date: Date | undefined) => void;
   selectedDate: Date | undefined;
   phoneRef: React.Ref<HTMLInputElement>;
 }
+
+export type FormErrors = Partial<Record<keyof ContactFormPayload, string>>;
