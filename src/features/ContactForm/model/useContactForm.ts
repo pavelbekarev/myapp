@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { sendContactData } from "../api/sendContactData";
-import type { ContactFormPayload } from "./types";
-import { validation } from "./validation";
+import type { ContactFormPayload, FormErrors } from "./types";
+import { ContactFormValidation } from "./validation";
+import * as Yup from "yup";
 
 export function useContactForm() {
   const [formData, setFormData] = useState<ContactFormPayload>({
@@ -10,20 +11,38 @@ export function useContactForm() {
     date: new Date(),
     comment: "",
   });
+  const [errors, setErrors] = useState<FormErrors>({});
 
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!validation(formData)) {
-      alert("Форма не валидна");
-      return;
-    }
-
     try {
-      const res = await sendContactData(formData);
-      console.debug(res);
-    } catch {
-      throw new Error("Не удалось отправить заявку");
+      await ContactFormValidation.validate(formData, {
+        abortEarly: false,
+      });
+      await sendContactData(formData);
+      setFormData({
+        name: "",
+        phone: "",
+        date: new Date(),
+        comment: "",
+      });
+
+      setErrors({});
+    } catch (e) {
+      if (e instanceof Yup.ValidationError) {
+        const formErrors: FormErrors = {};
+
+        e.inner.forEach((err) => {
+          if (err.path) {
+            console.debug(err);
+            formErrors[err.path as keyof ContactFormPayload] = err.message;
+          }
+        });
+        console.debug(errors);
+
+        setErrors(formErrors);
+      } else throw new Error("Не удалось отправить заявку", { cause: e });
     }
   };
 
@@ -36,6 +55,11 @@ export function useContactForm() {
     console.debug(name, value);
 
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: undefined,
+    }));
   };
 
   const handleDateChange = (date: Date | undefined) => {
@@ -51,5 +75,6 @@ export function useContactForm() {
     handleSubmit,
     handleChange,
     handleDateChange,
+    errors,
   };
 }

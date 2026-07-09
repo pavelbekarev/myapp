@@ -1,13 +1,14 @@
 import CustomDayPicker from "#shared/ui/CustomDayPicker";
 import type { ContactFieldProps } from "../model/types";
 
-export function ContactField({field, onChange, onDateChange, phoneRef, selectedDate}: ContactFieldProps ) {
+export function ContactField({ field, onChange, onDateChange, phoneRef, selectedDate, value }: ContactFieldProps ) {
     switch (field.type) {
         case 'textarea':
             return (
                 <textarea
                     className="contactForm__input"
                     onChange={onChange}
+                    value={value}
                     id={field.id}
                     name={field.id}
                     placeholder={field.placeholder}
@@ -19,6 +20,7 @@ export function ContactField({field, onChange, onDateChange, phoneRef, selectedD
                 <input
                     ref={phoneRef}
                     onChange={onChange}
+                    value={value}
                     className="contactForm__input"
                     id={field.id}
                     name={field.id}
@@ -41,6 +43,7 @@ export function ContactField({field, onChange, onDateChange, phoneRef, selectedD
                     onChange={onChange}
                     className="contactForm__input"
                     id={field.id}
+                    value={value}
                     name={field.id}
                     placeholder={field.placeholder}
                     type={field.type}

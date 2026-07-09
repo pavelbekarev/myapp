@@ -6,7 +6,7 @@ import "@daypicker/react/style.css";
 import { ContactField } from "./ContactField";
 
 export function ContactForm() {
-    const { formData, handleChange, handleSubmit, handleDateChange } = useContactForm();
+    const { formData, handleChange, handleSubmit, handleDateChange, errors } = useContactForm();
 
     const phoneRef = useMask({
         mask: "+7 (___) ___-__-__",
@@ -17,15 +17,22 @@ export function ContactForm() {
         <form onSubmit={handleSubmit} className="contactForm">
             <div className="contactForm__inputs">
                 {
-                    contactFormConfig.map((item, index) => (
-                        <ContactField
-                            key={index}
-                            field={item}
-                            onChange={handleChange}
-                            onDateChange={handleDateChange}
-                            phoneRef={phoneRef}
-                            selectedDate={formData.date}
-                        />
+                    contactFormConfig.map((item) => (
+                        <div key={item.id} className="contactForm__item">
+                            <ContactField
+                                field={item}
+                                value={
+                                        item.type === "date"
+                                            ? ""
+                                            : String(formData[item.id] ?? "")
+                                    }
+                                onChange={handleChange}
+                                onDateChange={handleDateChange}
+                                phoneRef={phoneRef}
+                                selectedDate={formData.date}
+                            />
+                            {errors[item.id] && <span className="contactForm__error">{errors[item.id]}</span>}
+                        </div>
                     ))
                 }
             </div>
