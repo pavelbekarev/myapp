@@ -13,13 +13,13 @@ export function Feedback() {
                     </h1>
                     <div className="feedback__contacts">
                         <div className="feedback__contact">
-                            <img src={phone} alt="Иконка телефона" />
+                            <img src={phone} alt="Иконка телефона" aria-hidden />
                             <a href="tel: +7(495) 123-45-67" className="feedback__contact-text">
                                 +7(495) 123-45-67
                             </a>
                         </div>
                         <div className="feedback__contact">
-                            <img src={mail} alt="Иконка почты" />
+                            <img src={mail} alt="Иконка почты" aria-hidden />
                             <a href="mailto: info@aurorapark.ru" className="feedback__contact-text">
                                 info@aurorapark.ru
                             </a>

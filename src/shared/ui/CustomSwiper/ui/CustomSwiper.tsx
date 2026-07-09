@@ -1,4 +1,3 @@
-'use client'
 
 import "../style.scss"
 import "swiper/css"
@@ -18,7 +17,6 @@ export default function CustomSwiper<T>({ swiperConfig, renderSlide, children }:
         pauseOnMouseEnter: true,
         delay: 1000,
     }
-
 
     if (swiperConfig?.slides)
         return (
