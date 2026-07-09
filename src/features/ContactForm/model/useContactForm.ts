@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { sendContactData } from "../api/sendContactData";
 import type { ContactFormPayload, FormErrors } from "./types";
 import { ContactFormValidation } from "./validation";
