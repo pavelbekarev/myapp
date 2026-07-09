@@ -35,11 +35,9 @@ export function useContactForm() {
 
         e.inner.forEach((err) => {
           if (err.path) {
-            console.debug(err);
             formErrors[err.path as keyof ContactFormPayload] = err.message;
           }
         });
-        console.debug(errors);
 
         setErrors(formErrors);
       } else throw new Error("Не удалось отправить заявку", { cause: e });
@@ -52,7 +50,6 @@ export function useContactForm() {
     >,
   ) => {
     const { name, value } = e.target;
-    console.debug(name, value);
 
     setFormData((prev) => ({ ...prev, [name]: value }));
 
